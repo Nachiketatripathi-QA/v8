@@ -2,9 +2,7 @@ package com.qait.demo.keywords;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.config.RedirectConfig.redirectConfig;
-
 import java.util.HashMap;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,11 +27,76 @@ public class ComputerDatabaseActions extends GetPage {
 		return driver.getTitle();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	public String translateEnglishWordtoFrench(String keyword) throws InterruptedException {
+		driver.findElement(By.xpath(".//*[@id='gt-sl-gms']")).click();
+		driver.findElement(By.xpath("//*[@id=':p']")).click();
+	
+		driver.findElement(By.xpath("//*[@id='source']")).sendKeys(keyword);
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id='gt-tl-gms']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id=':3v']")).click();
+		Thread.sleep(2000);
+		WebElement element = driver.findElement(By.xpath("//*[@id='result_box']"));
+		String mat=element.getText().toString();
+	    return mat;
+	}
+	
+	public String translateEnglishWordtoLatin(String keyword) throws InterruptedException {
+		driver.findElement(By.xpath(".//*[@id='gt-sl-gms']")).click();
+		driver.findElement(By.xpath("//*[@id=':p']")).click();
+	
+		driver.findElement(By.xpath("//*[@id='source']")).sendKeys(keyword);
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id='gt-tl-gms']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='gt-tl-gms-menu']/table/tbody/tr/td[4]/div/div[7]")).click();
+		Thread.sleep(2000);
+		WebElement element = driver.findElement(By.xpath("//*[@id='result_box']"));
+		String mat=element.getText().toString();
+	    return mat;
+
+	}
+	
+	public String translateEnglishWordtoIrish(String keyword) throws InterruptedException {
+		driver.findElement(By.xpath(".//*[@id='gt-sl-gms']")).click();
+		driver.findElement(By.xpath("//*[@id=':p']")).click();
+	
+		driver.findElement(By.xpath("//*[@id='source']")).sendKeys(keyword);
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id='gt-tl-gms']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//div[@id='gt-tl-gms-menu']/table/tbody/tr/td[3]/div/div[12]")).click();
+		Thread.sleep(2000);
+		WebElement element = driver.findElement(By.xpath("//*[@id='result_box']"));
+		String mat=element.getText().toString();
+	    return mat;
+	}
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public int getTotalCountOfComputerThroughUI() {
-	 int number=Integer
+		int number = Integer
 				.parseInt(CharMatcher.digit().retainFrom(driver.findElement(By.cssSelector("#main>h1")).getText()));
-	 logMessage("[TEST PASSED]: Number Of Mahcines before addition:"+number);
-	 return number;
+		logMessage("[TEST PASSED]: Number Of Mahcines before addition:" + number);
+		return number;
 	}
 
 	public boolean addComputerThroughAPI(String name) {
@@ -48,8 +111,8 @@ public class ComputerDatabaseActions extends GetPage {
 		Response response = resSpec.given().contentType(ContentType.JSON).with().body(payload).when().post(finalURI)
 				.then().statusCode(303).extract().response();
 
-		boolean b =response.getHeader("Set-Cookie").contains("success=Computer+" + name);
-		logMessage("[API TEST PASSED]: Computer Created: "+name);
+		boolean b = response.getHeader("Set-Cookie").contains("success=Computer+" + name);
+		logMessage("[API TEST PASSED]: Computer Created: " + name);
 		return b;
 	}
 

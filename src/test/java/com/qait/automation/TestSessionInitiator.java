@@ -14,6 +14,7 @@ import org.testng.Reporter;
 
 import com.qait.automation.utils.TakeScreenshot;
 import com.qait.demo.keywords.ComputerDatabaseActions;
+import com.qait.demo.keywords.TranslateActions;
 
 public class TestSessionInitiator {
 
@@ -35,6 +36,8 @@ public class TestSessionInitiator {
 	 * 
 	 */
 	public ComputerDatabaseActions databaseActions;
+	
+	public TranslateActions translateActions;
 
 	public TakeScreenshot takescreenshot;
 

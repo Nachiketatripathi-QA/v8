@@ -57,8 +57,7 @@ public class RestAPITester {
 		return headerFiledValue;
 	}
 
-	public String getHeaderFieldValueFromTheService(String urlToConnect,
-			String header) {
+	public String getHeaderFieldValueFromTheService(String urlToConnect, String header) {
 		String headerFiledValue = null;
 		try {
 			_connectToServiceURL(urlToConnect);
@@ -88,11 +87,9 @@ public class RestAPITester {
 
 	private static String resOutput;
 
-	public static String sendRequest(String urlStr, String param, String method)
-			throws IOException {
+	public static String sendRequest(String urlStr, String param, String method) throws IOException {
 
 		URL url = new URL(urlStr);
-
 		HttpURLConnection conn = null;
 		conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestProperty("Content-Type", "application/json");
@@ -108,12 +105,10 @@ public class RestAPITester {
 		conn.connect();
 
 		if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-			throw new RuntimeException("Failed : HTTP error code : "
-					+ conn.getResponseCode());
+			throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 		}
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				(conn.getInputStream())));
+		BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
 		String output;
 		System.out.println("Output from Server .... \n");

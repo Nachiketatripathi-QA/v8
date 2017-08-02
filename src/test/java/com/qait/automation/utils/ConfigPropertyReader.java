@@ -16,6 +16,7 @@ public class ConfigPropertyReader {
      * construtor of this class
      */
     public ConfigPropertyReader() {
+    	
     }
 
     /**

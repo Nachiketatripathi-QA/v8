@@ -29,16 +29,12 @@ public class YamlReader {
 			yamlFilePath = "src/test/resources/testdata/STG_TestData.yml";
 		} else if (tier.equalsIgnoreCase("qa")) {
 			yamlFilePath = "src/test/resources/testdata/QA_TestData.yml";
-		} else if (tier.equalsIgnoreCase("pr")
-				|| tier.equalsIgnoreCase("pristine")) {
+		} else if (tier.equalsIgnoreCase("pr") || tier.equalsIgnoreCase("pristine")) {
 			yamlFilePath = "src/test/resources/testdata/PR_TestData.yml";
-		} else if (tier.equalsIgnoreCase("prod")
-				|| tier.equalsIgnoreCase("production")) {
+		} else if (tier.equalsIgnoreCase("prod") || tier.equalsIgnoreCase("production")) {
 			yamlFilePath = "src/test/resources/testdata/PROD_TestData.yml";
 		} else {
-			Reporter.log(
-					"YOU HAVE PROVIDED WRONG TIER IN CONFIG!!! using dev test data",
-					true);
+			Reporter.log("YOU HAVE PROVIDED WRONG TIER IN CONFIG!!! using dev test data", true);
 		}
 
 		System.out.println("yaml file path ::" + yamlFilePath);
@@ -99,12 +95,10 @@ public class YamlReader {
 		return parseMap(object, token).get(st[st.length - 1]).toString();
 	}
 
-	private static Map<String, Object> parseMap(Map<String, Object> object,
-			String token) {
+	private static Map<String, Object> parseMap(Map<String, Object> object, String token) {
 		if (token.contains(".")) {
 			String[] st = token.split("\\.");
-			object = parseMap((Map<String, Object>) object.get(st[0]),
-					token.replace(st[0] + ".", ""));
+			object = parseMap((Map<String, Object>) object.get(st[0]), token.replace(st[0] + ".", ""));
 		}
 		return object;
 	}
@@ -124,8 +118,7 @@ public class YamlReader {
 	}
 
 	public static int generateRandomNumber(int MinRange, int MaxRange) {
-		int randomNumber = MinRange
-				+ (int) (Math.random() * ((MaxRange - MinRange) + 1));
+		int randomNumber = MinRange + (int) (Math.random() * ((MaxRange - MinRange) + 1));
 		return randomNumber;
 	}
 

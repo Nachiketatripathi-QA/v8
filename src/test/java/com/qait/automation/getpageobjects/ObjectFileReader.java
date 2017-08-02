@@ -15,12 +15,10 @@ import java.util.ArrayList;
  *
  */
 public class ObjectFileReader {
-
 	static String tier;
 	static String filepath = "src/test/resources/PageObjectRepository/";
 
-	public static String[] getELementFromFile(String pageName,
-			String elementName) {
+	public static String[] getELementFromFile(String pageName,String elementName) {
 		setTier();
 		try {
 			FileReader specFile = new FileReader(filepath + tier + pageName + ".spec");
@@ -127,6 +125,8 @@ public class ObjectFileReader {
 		case STG:
 		case Staging:
 			tier = "STG/";
+			break;
+		default:
 			break;
 		}
 	}

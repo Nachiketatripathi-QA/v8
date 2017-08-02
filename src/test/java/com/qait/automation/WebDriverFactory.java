@@ -57,10 +57,10 @@ public class WebDriverFactory {
 				|| (browser.equalsIgnoreCase("internet explorer"))) {
 			cap = DesiredCapabilities.internetExplorer();
 		}
-		String seleniuhubaddress = selConfig.get("seleniumserverhost");
+		String seleniumhubaddress = selConfig.get("seleniumserverhost");
 		URL selserverhost = null;
 		try {
-			selserverhost = new URL(seleniuhubaddress);
+			selserverhost = new URL(seleniumhubaddress);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
